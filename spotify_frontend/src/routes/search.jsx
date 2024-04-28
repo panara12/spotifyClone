@@ -22,7 +22,7 @@ function Search() {
 
   return (
     <LoginContainer navigateTo="/home" key={"search"}>
-        <div className='flex flex-col h-full'>
+        <div className='flex flex-col h-full no-scrollbar overflow-auto'>
             <div className='flex justify-center items-center w-full' >
                 <div className={`flex items-center justify-start w-1/3 py-2 rounded-full  bg-black ${isInputFocused ?"border border-white":""}`}>    
                     <Icon icon="ion:search"  style= {{color:'white'}} 

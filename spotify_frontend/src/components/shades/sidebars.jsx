@@ -8,12 +8,14 @@ function Sidebars({setCreateplaylistopen ,usertype}) {
   return (
     <div className='h-full w-3/12 bg-black text-white overflow-hidden'>
         <div className=' p-4 bg-app-black rounded-xl m-2'>
+          <Link to="/home">
             <div className='flex justify-start items-center  pl-2 mb-4'>
                 <img src={Spotifylogo} alt='as'
                   className='h-10'
                 />
                 <p>Spotify</p>
             </div>
+            </Link>
             {usertype=="admin" &&
             <Link to="/admin">
               <div className='flex justify-start items-center pl-2 mb-3'>

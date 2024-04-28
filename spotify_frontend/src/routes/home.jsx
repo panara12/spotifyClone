@@ -1,13 +1,12 @@
 import React from 'react'
 import Spotifylogo from '../assets/mdi--spotify.svg'
 import { Icon } from '@iconify/react';
-import Dinnerimg from "../assets/dinnner.jpg"
-import Bhajan from '../assets/Bhajan.webp';
-import heart from '../assets/heart.jpg';
-import friend from '../assets/friends.jpg';
-import daydreamer from '../assets/dydreamer.jpg';
 import { Link } from 'react-router-dom';
-
+import Dinnerimg from '../assets/dinnner.jpg'
+import Bhajan from '../assets/Bhajan.webp'
+import heart from '../assets/heart.jpg'
+import friend from '../assets/friends.jpg'
+import daydreamer from '../assets/dydreamer.jpg'
 
 function Home() {
   return (
@@ -186,6 +185,7 @@ const Playlist = ({title})=>{
 
 const Card = ({title,discription,url})=>{
   return(
+    <Link to='/login'>
     <div className='flex rounded-lg flex-col p-4 w-card h-card bg-zinc-900 hover:bg-zinc-800'>
         <div className='mb-4'>
           <img src={url} alt='abc' className='h-44 rounded-lg shadow-my '></img>
@@ -193,6 +193,7 @@ const Card = ({title,discription,url})=>{
         <div className='text-white font-semibold mb-2'>{title}</div>
         <div className='text-gray-500 font-bold text-xs'>{discription}</div>
     </div>
+    </Link>
   )
 }
 

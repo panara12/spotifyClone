@@ -57,7 +57,7 @@ function Loghome() {
 
   const Playlistsongs =({songs})=>{
     return(
-    songs.map((i)=>{
+    songs.map((i,index)=>{
       return(
         <div onClick={()=>{setCurrentSong(i)}}>
           <Card title={i.name} url={i.thumbnail} key={JSON.stringify.item}/>
@@ -66,11 +66,24 @@ function Loghome() {
     }))
   }
 
+  const Allsongs = ()=>{
+    return(
+      songdata.map((item)=>{
+        return(
+          <div onClick={()=>{setCurrentSong(item)}}>
+            <Card title={item.name} url={item.thumbnail} />
+          </div>
+        )
+      })
+    )
+  }
+
 
   return (
     <LoginContainer key={"home"}>
             {
-              playlistdata.map((item)=>{
+              playlistdata.map((item,i)=>{
+                if(i<3){
                 return(
                 <>
                   <Playlist title={item.name} id={item._id} key={JSON.stringify.item}/>
@@ -78,9 +91,13 @@ function Loghome() {
                   <Playlistsongs songs={item.songs} key={JSON.stringify.item}/>
                   </div>
                 </>
-                )
+                )}
               })
             }
+            <div className='text-2xl font-semibold w-full text-white'>All Songs</div>
+            <div className='grid grid-cols-1  md:grid-cols-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'>
+              <Allsongs />
+            </div>
     </LoginContainer>
   )
 }

@@ -1,8 +1,23 @@
 import { Icon } from '@iconify/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
-function Navbar({setLogout,fname,lname,back,usertype}) {
+
+function Navbar({image,back,usertype}) {
+  const  [cookies, setCookie] = useCookies(["token"]);
+
+    const navigate = useNavigate();
+    const  logout=()=>{
+        setCookie("token","",{path:"/",
+        maxAge:-1});
+        setCookie("userid","",{path:"/",
+        maxAge:-1});
+        navigate("/home");
+    }
+    const url = window.location.href;
+
+
   return (
     <div className='sticky z-1 top-0'> 
           <div className='h-1/10 w-full bg-app-black 
@@ -19,11 +34,11 @@ function Navbar({setLogout,fname,lname,back,usertype}) {
               </div>
               <div className='flex justify-start items-center mr-14'>
                   <div className='bg-white p-2 rounded-full font-semibold mr-5'>
-                    <p className='mx-4'>
+                    <p className='mx-4 text-sm'>
                     Explore Premium
                     </p>
                   </div>
-                  {(usertype== "admin" || usertype=="artist") &&
+                  {((usertype== "admin") || (usertype=="artist")) &&
                   <Link to="/uploadsong">
                   <div className='text-white font-semibold p-2 mr-4 opacity-60 hover:opacity-100 sm:hidden md:hidden lg:flex  bg-black
                   rounded-full flex justify-center items-center
@@ -43,18 +58,27 @@ function Navbar({setLogout,fname,lname,back,usertype}) {
                   <Icon icon="mdi:bell-outline"  style={{color: 'white'}} className='size-7'/>
                   </div>
                   <div className='text-white text-lg p-1 rounded-full bg-black'>
-                  <div class="dropdown" onClick={()=>{setLogout(true)}}>
-                    {fname.charAt(0).toUpperCase()}
-                    {lname.charAt(0).toUpperCase()}
+                  <Link to="/userprofile">
+                    <div class="dropdown">
+                    <img src={image} className='h-10 w-10 rounded-full'/>
                     </div>
+                  </Link>
+                  </div>
+                  <div className='ml-5 bg-white p-2 rounded-full'
+                  onClick={()=>{
+                    logout()
+                  }} >
+                    logout
                   </div>
               </div>
           </div>
+          {(url == "http://localhost:5173/home" ||url == "http://localhost:5173/library" ||url == "http://localhost:5173/mysongs")  &&
           <div className='h-14 bg-app-black flex justify-start items-center space-x-4 pl-5 '>
               <div className='p-1 px-4  bg-white rounded-full'>All</div>
               <div className='p-1 px-4 bg-white  bg-opacity-30 rounded-full'>Podcast</div>
               <div className='p-1 px-4 bg-zinc-700 rounded-full'>Music</div>
           </div>
+          }
         </div>
   )
 }

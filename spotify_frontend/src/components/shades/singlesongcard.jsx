@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Icon } from '@iconify/react';
 import Songcontext from '../../context/songcontext';
+import { Link } from 'react-router-dom';
 
 
 function Singlesongcard({info,playsound}) {
@@ -9,16 +10,18 @@ function Singlesongcard({info,playsound}) {
 
   return (
     <div className='text-white flex hover:bg-gray-400 hover:bg-opacity-20 p-2 rounded-sm justify-between items-center w-9/10'
-    onClick={()=>{
-      setCurrentSong(info);
-    }}
+    
     >
       <div className='flex space-x-4 items-center'>
         <div className='w-12 h-12 bg-white bg-cover bg-center'>
+      <Link to={"/songdetailpage/"+info._id}>
           <img src={info.thumbnail} className='object-cover w-12 h-12'></img>
+      </Link>
         </div>
         <div className='flex flex-col justify-center items-start'>
-        <div className='hover:underline cursor-pointer'>{info.name}</div>
+        <div className='hover:underline cursor-pointer' onClick={()=>{
+          setCurrentSong(info);
+          }}>{info.name}</div>
         <div className='hover:underline cursor-pointer text-xs opacity-50'>{info.artist.firstName+" "+info.artist.lastName}</div>
         </div>
       </div>

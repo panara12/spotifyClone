@@ -38,13 +38,18 @@ router.post("/create",passport.authenticate("jwt",{session:false}),async (req,re
 
     const newsong = new song({name,thumbnail,track,artist});
     await newsong.save();
+    req.user.mysongs.push(newsong._id);
+    await req.user.save();
     return res.status(200).json(newsong);
 });
 
 // delete song for admin
 router.delete("/get/allsongs/:id",passport.authenticate("jwt",{session:false}),async(req,res)=>{
     const {id} = req.params;
+    const currentUser = req.user;
     const deleteindex = await song.findOneAndDelete({_id:id});
+    currentUser.mysongs = currentUser.mysongs.filter(item => item !== id);
+    await currentUser.save();
     res.send(deleteindex);
 })
 
@@ -97,7 +102,10 @@ router.get("/get/songbyname/:songName",passport.authenticate("jwt",{session:fals
 
 router.delete("/get/mysongs/:id",passport.authenticate("jwt",{session:false}),async(req,res)=>{
     const {id} = req.params;
+    const currentUser = req.user;
     const deleteindex = await song.findOneAndDelete({_id:id});
+    currentUser.mysongs = currentUser.mysongs.filter(item => item !== id);
+    await currentUser.save();
     res.send(deleteindex);
 })
 

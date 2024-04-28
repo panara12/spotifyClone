@@ -16,6 +16,13 @@ import Library from './routes/library';
 import Playlistsongs from './routes/playlistsongs';
 import Allsongs from './routes/admin/allsongs';
 import { makeauthenticatedGETRequest } from './utils/serverhelper';
+import Likedsongs from '../src/routes/likedsongs'
+import Songdetailpage from '../src/routes/songdetailpage'
+import Userprofile from './routes/userprofile';
+
+
+
+
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [cookie, setCookie] = useCookies(['token']);
@@ -53,18 +60,24 @@ function App() {
                 <Route path='/playlistsongs/:playlistId' element={<Playlistsongs />}></Route>
                 <Route path='/admin/allusers' element={<Allusers />}></Route>
                 <Route path='/admin/allsongs' element={<Allsongs />}></Route>
+                <Route path='/likedsongs' element={<Likedsongs />}></Route>
+                <Route path='/userprofile' element={<Userprofile />}></Route>
+                <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
             }
             {
               userrole=="artist" && 
               <Routes>
                 <Route path='/home/' element={<Loghome />}></Route>
-                <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/uploadsong' element={<Uploadsong />}></Route>
+                <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/mysongs' element={<Mysong />}></Route>
+                <Route path='/userprofile' element={<Userprofile />}></Route>
                 <Route path='/search' element={<Search />}></Route>
                 <Route path='/library' element={<Library />}></Route>
                 <Route path='/playlistsongs/:playlistId' element={<Playlistsongs />}></Route>
+                <Route path='/likedsongs' element={<Likedsongs />}></Route>
+                <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
 
             }
@@ -72,9 +85,12 @@ function App() {
               <Routes>
                 <Route path='/home/' element={<Loghome />}></Route>
                 <Route path='*' element={<Navigate to="/home/" />} />
+                <Route path='/userprofile' element={<Userprofile />}></Route>
                 <Route path='/search' element={<Search />}></Route>
                 <Route path='/library' element={<Library />}></Route>
+                <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
                 <Route path='/playlistsongs/:playlistId' element={<Playlistsongs />}></Route>
+                <Route path='/likedsongs' element={<Likedsongs />}></Route>
               </Routes>
             }
             </Songcontext.Provider>

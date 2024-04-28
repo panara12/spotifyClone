@@ -20,7 +20,6 @@ function Library() {
       const deleteplaylist = async(id)=>{
         const response = await makeauthenticatedDELETERequest("/playlist/get/deleteplaylist/"+id);
         console.log(response);
-        navigate('/library');
       }
 
       
@@ -55,6 +54,7 @@ const Card = ({title,url,id,deleteplaylist})=>{
           <div className='text-white font-semibold mb-2'>{title}</div>
           <div className='text-white self-center'><button className='bg-red-500 p-2 rounded-full' onClick={()=>{
             deleteplaylist(id);
+            window.location.reload("/library");
           }
           }>Delete</button></div>
       </div>

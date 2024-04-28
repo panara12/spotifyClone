@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
   role: { type: String, enum: ['user', 'admin','artist'], default: 'user' },
   token: { type: String },
   playlist:[{type:String}],
-  mysongs:{type:String,default:""},
+  mysongs:[{type:String}],
 });
 
 module.exports = mongoose.model('User', UserSchema);

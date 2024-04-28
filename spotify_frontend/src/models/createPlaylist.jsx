@@ -14,6 +14,9 @@ function CreatePlaylist({closemodel}) {
         console.log(response);
         if(response._id){
             closemodel();
+          if(window.location.href=="http://localhost:5173/library"){
+              window.location.reload("/library");
+          }
             navigate("/library");
         }
     }
