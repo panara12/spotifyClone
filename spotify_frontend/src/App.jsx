@@ -19,6 +19,7 @@ import { makeauthenticatedGETRequest } from './utils/serverhelper';
 import Likedsongs from '../src/routes/likedsongs'
 import Songdetailpage from '../src/routes/songdetailpage'
 import Userprofile from './routes/userprofile';
+import Userupdate from './routes/userupdate';
 
 
 
@@ -62,12 +63,15 @@ function App() {
                 <Route path='/admin/allsongs' element={<Allsongs />}></Route>
                 <Route path='/likedsongs' element={<Likedsongs />}></Route>
                 <Route path='/userprofile' element={<Userprofile />}></Route>
+                <Route path='/userupdate' element={<Userupdate />}></Route>
                 <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
             }
             {
               userrole=="artist" && 
               <Routes>
+              
+                <Route path='/userupdate' element={<Userupdate />}></Route>
                 <Route path='/home/' element={<Loghome />}></Route>
                 <Route path='/uploadsong' element={<Uploadsong />}></Route>
                 <Route path='*' element={<Navigate to="/home/" />} />
@@ -83,6 +87,7 @@ function App() {
             }
             {userrole == "user" &&
               <Routes>
+                <Route path='/userupdate' element={<Userupdate />}></Route>
                 <Route path='/home/' element={<Loghome />}></Route>
                 <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/userprofile' element={<Userprofile />}></Route>

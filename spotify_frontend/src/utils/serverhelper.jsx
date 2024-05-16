@@ -12,6 +12,7 @@ export const makeUnauthenticatedPOSTRequest = async (route,body)=>{
     return fromattedResponse;
 }
 
+
 export const makeauthenticatedPOSTRequest = async (route,body)=>{
     const token = getToken();
     const response = await fetch(backendurl+route,{
@@ -25,6 +26,22 @@ export const makeauthenticatedPOSTRequest = async (route,body)=>{
     const fromattedResponse = await response.json();
     return fromattedResponse;
 }
+
+export const makeauthenticatedPUTRequest = async (route,body)=>{
+    const token = getToken();
+    const response = await fetch(backendurl+route,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token}` 
+        },
+        body:JSON.stringify(body),
+    });
+    const fromattedResponse = await response.json();
+    return fromattedResponse;
+}
+
+
 
 export const makeauthenticatedGETRequest = async (route)=>{
     const token = getToken();

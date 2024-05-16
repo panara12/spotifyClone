@@ -21,6 +21,7 @@ function Signup() {
     const [key,setkey] = useState("");
     const navigate = useNavigate();
     console.log(role);
+    
 
 
     const signup = async ()=>{
@@ -120,9 +121,10 @@ function Signup() {
                     setvalue={setLastname}
                 />
 
+
                 <Textinput 
                 classname=""
-                label="Image URL" placeholder="enter your imageURL"
+                label="image" placeholder="enter your image url"
                     value={image}
                     setvalue={setImage}
                 />

@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   password: String,
   username: String,
   lastName: String,
-  image:String,
+  image: String,
   role: { type: String, enum: ['user', 'admin','artist'], default: 'user' },
   token: { type: String },
   playlist:[{type:String}],
