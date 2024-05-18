@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Textinput from '../components/shades/Textinput'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie';
@@ -9,7 +8,7 @@ function Changepass() {
     const navigate = useNavigate();
     const [conpass,setConpass]= useState("");
     const [oldpass,setOldpass]= useState("");
-    let count=0;
+
     const [cookies,setcookies] = useCookies(["userid","token"]);
 
     const [values,setvalues] = useState({
@@ -36,7 +35,7 @@ function Changepass() {
         maxAge:-1});
         navigate("/login");}
         else{
-            
+            alert("something wronge");
         }
     }
 
@@ -89,15 +88,17 @@ function Changepass() {
                         }}
                         />
                         </div>
-                    <div className="w-full flex items-center my-8 justify-end">
+                    <div className="w-full flex flex-col space-y-5 items-center my-8 justify-end">
                     <button
                     className='bg-app-green  p-3 px-10  rounded-full text-center'
                     onClick={(e)=>{updateuservalue(e)}}
                         >Change password</button>
+                    <Link to="/userprofile">
+                        <button
+                        className='bg-app-green  p-3 px-10  rounded-full text-center'
+                        >Cancle</button></Link>
                 </div>
-                {
-                    count>0 && <p className='text-red'>something went wronge</p>
-                }
+                
                 <div className='w-full border border-solid border-gray-300'>
                 </div>
             </div>
