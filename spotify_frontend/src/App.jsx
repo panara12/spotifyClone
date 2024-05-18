@@ -20,6 +20,7 @@ import Likedsongs from '../src/routes/likedsongs'
 import Songdetailpage from '../src/routes/songdetailpage'
 import Userprofile from './routes/userprofile';
 import Userupdate from './routes/userupdate';
+import Changepass from './routes/changepass';
 
 
 
@@ -64,6 +65,7 @@ function App() {
                 <Route path='/likedsongs' element={<Likedsongs />}></Route>
                 <Route path='/userprofile' element={<Userprofile />}></Route>
                 <Route path='/userupdate' element={<Userupdate />}></Route>
+                <Route path='/changepass' element={<Changepass />}></Route>
                 <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
             }
@@ -81,6 +83,7 @@ function App() {
                 <Route path='/library' element={<Library />}></Route>
                 <Route path='/playlistsongs/:playlistId' element={<Playlistsongs />}></Route>
                 <Route path='/likedsongs' element={<Likedsongs />}></Route>
+                <Route path='/changepass' element={<Changepass />}></Route>
                 <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
 
@@ -95,6 +98,7 @@ function App() {
                 <Route path='/library' element={<Library />}></Route>
                 <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
                 <Route path='/playlistsongs/:playlistId' element={<Playlistsongs />}></Route>
+                <Route path='/changepass' element={<Changepass />}></Route>
                 <Route path='/likedsongs' element={<Likedsongs />}></Route>
               </Routes>
             }

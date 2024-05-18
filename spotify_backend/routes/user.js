@@ -13,6 +13,7 @@ router.get("/get/alluserdata",passport.authenticate("jwt",{session:false}),async
 
 router.put("/update/user/:userid",passport.authenticate("jwt",{session:false}),async(req,res)=>{
     const currentUser = req.user;
+    console.log(req.body);
     const databyid = await User.findOneAndUpdate({_id : currentUser.id},{$set:req.body},{new:true})
     return res.status(200).json({data:databyid});
 })

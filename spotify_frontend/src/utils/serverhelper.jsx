@@ -29,6 +29,7 @@ export const makeauthenticatedPOSTRequest = async (route,body)=>{
 
 export const makeauthenticatedPUTRequest = async (route,body)=>{
     const token = getToken();
+    console.log(body);
     const response = await fetch(backendurl+route,{
         method:"PUT",
         headers:{

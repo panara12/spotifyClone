@@ -51,6 +51,10 @@ function Userprofile() {
                     <button className='border p-2 hover:bg-white hover:text-black'>Back</button>
                 </Link>
             </div>
+
+            <div>
+                Wanna change password ? <Link to="/changepass"><span className='font-bold underline'>Click here</span></Link>
+            </div>
         </div>
     </LoginContainer>
   )
