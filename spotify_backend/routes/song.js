@@ -6,28 +6,6 @@ const passport = require('passport');
 const { reset } = require('nodemon');
 const { route } = require('./auth');
 
-// const LocalStrategy = require('passport-local').Strategy;
-
-// passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password'
-// }, async (email, password, done) => {
-//     try {
-//         const user = await User.findOne({ email });
-//         if (!user) {
-//             return done(null, false, { message: 'Incorrect email.' });
-//         }
-//         const isMatch = await user.isValidPassword(password);
-//         if (!isMatch) {
-//             return done(null, false, { message: 'Incorrect password.' });
-//         }
-//         return done(null, user);
-//     } catch (err) {
-//         return done(err);
-//     }
-// }));
-
-
 
 router.post("/create",passport.authenticate("jwt",{session:false}),async (req,res)=>{
     const {name,thumbnail,track}=req.body;

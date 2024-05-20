@@ -21,6 +21,7 @@ import Songdetailpage from '../src/routes/songdetailpage'
 import Userprofile from './routes/userprofile';
 import Userupdate from './routes/userupdate';
 import Changepass from './routes/changepass';
+import Demo from './routes/demo';
 
 
 
@@ -52,6 +53,7 @@ function App() {
             <Songcontext.Provider value={{ currentSong, setCurrentSong, soundPlayed, setIsPause, setSoundPlayed, ispause }}>
             {userrole=="admin" && 
             <Routes>
+                <Route path='/demo' element={<Demo />}></Route>
                 <Route path='/home/' element={<Loghome />}></Route>
                 <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/uploadsong' element={<Uploadsong />}></Route>

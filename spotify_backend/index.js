@@ -13,7 +13,7 @@ const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 app.use(cors());
 app.use(express.json()); // to support JSON-encoded bodies
-
+app.use(express.urlencoded({extended:false}))
 app.get("/",(req,res)=>{
     res.send("qorking");
 })
@@ -21,8 +21,6 @@ app.get("/",(req,res)=>{
 // mongodb+srv://Harshil1:Harshil2812@cluster0.se35oya.mongodb.net/chainis?retryWrites=true&w=majority
 
 mongoose.connect("mongodb+srv://panaraabhay:abhay112004@cluster12.8l9con2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster12",{
-   useNewUrlParser: true, 
-   useUnifiedTopology: true 
 })
 .then((res)=>{
     console.log("connected");
