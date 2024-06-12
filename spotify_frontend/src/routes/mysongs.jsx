@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Singlesongcard from '../components/shades/singlesongcard'
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import { makeauthenticatedGETRequest,makeauthenticatedDELETERequest } from '../utils/serverhelper'
 import LoginContainer from '../components/container/logincontainer';
 import { useNavigate } from 'react-router-dom';

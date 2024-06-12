@@ -55,7 +55,6 @@ function App() {
             <Routes>
                 <Route path='/demo' element={<Demo />}></Route>
                 <Route path='/home/' element={<Loghome />}></Route>
-                <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/uploadsong' element={<Uploadsong />}></Route>
                 <Route path='/admin' element={<Admin />}></Route>
                 <Route path='/mysongs' element={<Mysong />}></Route>
@@ -68,6 +67,7 @@ function App() {
                 <Route path='/userprofile' element={<Userprofile />}></Route>
                 <Route path='/userupdate' element={<Userupdate />}></Route>
                 <Route path='/changepass' element={<Changepass />}></Route>
+                <Route path='*' element={<Navigate to="/home/" />} />
                 <Route path='/songdetailpage/:id' element={<Songdetailpage />}></Route>
               </Routes>
             }

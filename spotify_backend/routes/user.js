@@ -44,8 +44,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 
-router.post("/upload",upload.single('file'),(req,res)=>{
-    console.log(req.body);
+router.post("/upload",(req,res)=>{
+    console.log(req.body); 
     console.log(req.file);
 })
   
