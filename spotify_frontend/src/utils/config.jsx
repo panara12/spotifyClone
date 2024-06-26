@@ -1,1 +1,1 @@
-export const  backendurl ="http://localhost:5000"
+export const  backendurl ="https://spotifybackend-0z77.onrender.com"

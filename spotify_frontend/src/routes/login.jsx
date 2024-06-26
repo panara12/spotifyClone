@@ -26,7 +26,7 @@ function Login() {
             date.setDate(date.getDate()+30);
             setCookie("token",token,{path:"/",expires:date});
             setCookie("userid",userid,{path:"/",expires:date});
-            navigate("/home/"+response.user._id);
+            navigate("/home/");
         }
         else{
             alert("failuer");

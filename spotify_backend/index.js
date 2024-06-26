@@ -1,17 +1,16 @@
 const  express = require('express')
+require('dotenv').config()
 const app = express()
 const port = 5000
 const mongoose = require("mongoose");
 const auth = require('./routes/auth');
 const passport = require('passport')
 const User = require('./model/User');
-const cors = require('cors');
 const playlist = require("./routes/playlist");
 const song = require("./routes/song");
 const userdata = require("./routes/user");
 const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
-app.use(cors());
 app.use(express.json()); // to support JSON-encoded bodies
 app.use(express.urlencoded({extended:false}))
 app.get("/",(req,res)=>{
@@ -39,7 +38,7 @@ mongoose.connect(process.env.MONGO_URL,{
 
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secretiskey';
+opts.secretOrKey = process.env.JWT_SECRET;
 
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
     User.findOne({_id: jwt_payload.identifier})
